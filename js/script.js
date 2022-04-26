@@ -25,7 +25,6 @@ const INIT_BTN = document.querySelector(".my-btn");
 const CONTAINER = document.querySelector(".container");
 const limiteEstrazioni = 5;
 let listaNumeriComputer = [];
-// console.log("questo è il log dell'array", listaNumeriComputer);
 let listaNumeriUtente = [];
 
 // Logica
@@ -36,31 +35,42 @@ INIT_BTN.addEventListener('click', inizio);
 //
 function inizio(){
     pulisci();
+    setTimeout(cancellaCelle, "2000");
 
     for (let i = 0; i < limiteEstrazioni; i++){
-        generaCella(0, 9);
+        generaCella();
     }
 
-    attivaTimer()
 }
 
 
 // //
 function pulisci(){
     CONTAINER.innerHTML = "";
+    listaNumeriComputer = [];
 }
 
-function generaCella(min, max){
+function generaCella(){
     
     const box = document.createElement("div");
     box.classList.add("box", "center", "m10");
 
-    box.append(Math.floor(Math.random() * (max - min)));
+    box.append(generaNumeri(0, 9));
+
 
     CONTAINER.append(box);
     return box;
 }
 
-function attivaTimer(){
+function generaNumeri(min, max){
+    numero = Math.floor(Math.random() * (max - min));
+    listaNumeriComputer.push(numero);
 
+    console.log(listaNumeriComputer);
+    return numero;
+}
+
+function cancellaCelle() {
+    console.log("ciao");
+    CONTAINER.innerHTML = "";
 }
