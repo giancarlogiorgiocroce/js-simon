@@ -90,7 +90,7 @@ main{
 
 .container{
     max-width: var(--grandezza);
-    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .results{

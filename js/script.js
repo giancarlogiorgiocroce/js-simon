@@ -9,10 +9,47 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 * Individuate gli elementi di cui avete bisogno per realizzare il programma.
 */
 
-// Variabili universali
+/*
+    1. Creare 5 numeri casuali (da 1 a 20).
+    2. Rendere i numeri unici.
+    3. Pusha i numeri in un array
+    4. Creare un box dove appendere i numeri in modo che siano visibili.
+    5. Creare un timer alla fine del quale i box guadagnano la classe "invisible".
+    6. Creare un array vuoto in cui l'untente può pushare 5 numeri a suo piacimento.
+    7. Confrontare l'arrey utente con quello estratto casualmente.
+    8. Comunica i risultati.
+*/
 
+// Variabili universali
+const INIT_BTN = document.querySelector(".my-btn");
+const CONTAINER = document.querySelector(".container");
 
 // Logica
+INIT_BTN.addEventListener('click', inizio);
 
 
 // Funzioni
+//
+function inizio(){
+    generaCella();
+    generaNumero();
+}
+
+
+// //
+// function genera
+
+
+function generaCella(){
+    const box = document.createElement("div");
+    box.classList.add("box", "center", "m10");
+
+    box.append(generaNumero(0, 9));
+
+    CONTAINER.append(box);
+    return box;
+}
+
+function generaNumero(max, min){
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}

@@ -14,7 +14,13 @@
 
 /*Quadrati e loro classi specifiche*/
 .box{
+    height: calc((var(--grandezza) / 5) - 20px);
+    width: calc((var(--grandezza) / 5) - 20px);
+    
+    background-color: var(--color-two);
     border: 1px solid var(--color-zero);
+
+    font-size: 30px;
 }
 .active{
     background-color: var(--color-one);
