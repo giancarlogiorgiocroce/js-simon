@@ -1,0 +1,22 @@
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.invisible{
+    display: none;
+}
+
+.m10{
+    margin: 10px;
+}
+
+/*Quadrati e loro classi specifiche*/
+.box{
+    border: 1px solid var(--color-zero);
+}
+.active{
+    background-color: var(--color-one);
+    color: var(--color-zero);
+}
