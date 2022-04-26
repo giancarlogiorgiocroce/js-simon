@@ -22,7 +22,9 @@
 
     font-size: 30px;
 }
-.active{
-    background-color: var(--color-one);
-    color: var(--color-zero);
+.box.win{
+    background-color: green;
+}
+.box.lose{
+    background-color: red;
 }

@@ -87,7 +87,6 @@ function chiediNumeri(){
     }
     
     setTimeout(fineGioco(listaNumeriComputer, listaNumeriUtente), 500);
-    // fineGioco()
 }
 
 function fineGioco(arr1, arr2) {
@@ -97,18 +96,33 @@ function fineGioco(arr1, arr2) {
 
     for (let i = 0; i < arr1.length; i++) {
 		if (arr1[i] === arr2[i]) {
-            console.log("verde", arr1[i]);
             arr3.push(arr1[i]);
-            punti++
+            punti++;
+            numeroVincente(arr1[i]);
         }
 	    else {
-            console.log("rosso", arr1[i]);
             arr4.push(arr1[i]);
+            numeroPerdente(arr1[i], arr2[i]);
         }
+
     }
 
     console.log("hai imbroccato tutti questi", arr3, "ma sbagliato tutti questi", arr4, "per un totale di:", arr3-arr4, "punti");
-    console.log(`hai imbroccato tutti questi ${arr3} ma sbagliato tutti questi ${arr4} per un totale di:${punti} punti!`);
+
+    document.querySelector("h1").innerHTML = `Hai guadagnato un totale di ${punti} punti!`;
 
 }
 
+function numeroVincente(appendimi){
+    const box = document.createElement("div");
+    box.classList.add("box", "center", "m10", "win");
+    box.append(appendimi);
+    CONTAINER.append(box);
+}
+
+function numeroPerdente(appendimi, confrontami){
+    const box = document.createElement("div");
+    box.classList.add("box", "center", "m10", "lose");
+    box.append(`${appendimi} non ${confrontami}`);
+    CONTAINER.append(box);
+}
