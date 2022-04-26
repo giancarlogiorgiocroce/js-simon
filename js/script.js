@@ -48,6 +48,7 @@ function inizio(){
 function pulisci(){
     CONTAINER.innerHTML = "";
     listaNumeriComputer = [];
+    listaNumeriUtente = [];
 }
 
 function generaCella(){
@@ -71,6 +72,43 @@ function generaNumeri(min, max){
 }
 
 function cancellaCelle() {
-    console.log("ciao");
+    console.log("è passato il tempo stabilito!");
     CONTAINER.innerHTML = "";
+
+    setTimeout(chiediNumeri, 500);
+
 }
+
+function chiediNumeri(){
+    while(listaNumeriUtente.length<listaNumeriComputer.length){
+        const numeroUtente = parseInt(prompt("Inserisci in ordine i numeri visti"));
+        listaNumeriUtente.push(numeroUtente);
+        console.log(listaNumeriUtente);
+    }
+    
+    setTimeout(fineGioco(listaNumeriComputer, listaNumeriUtente), 500);
+    // fineGioco()
+}
+
+function fineGioco(arr1, arr2) {
+    let arr3 = []
+    let arr4 = []
+    let punti = 0;
+
+    for (let i = 0; i < arr1.length; i++) {
+		if (arr1[i] === arr2[i]) {
+            console.log("verde", arr1[i]);
+            arr3.push(arr1[i]);
+            punti++
+        }
+	    else {
+            console.log("rosso", arr1[i]);
+            arr4.push(arr1[i]);
+        }
+    }
+
+    console.log("hai imbroccato tutti questi", arr3, "ma sbagliato tutti questi", arr4, "per un totale di:", arr3-arr4, "punti");
+    console.log(`hai imbroccato tutti questi ${arr3} ma sbagliato tutti questi ${arr4} per un totale di:${punti} punti!`);
+
+}
+
