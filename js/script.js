@@ -23,6 +23,10 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 // Variabili universali
 const INIT_BTN = document.querySelector(".my-btn");
 const CONTAINER = document.querySelector(".container");
+const limiteEstrazioni = 5;
+let listaNumeriComputer = [];
+// console.log("questo è il log dell'array", listaNumeriComputer);
+let listaNumeriUtente = [];
 
 // Logica
 INIT_BTN.addEventListener('click', inizio);
@@ -31,25 +35,32 @@ INIT_BTN.addEventListener('click', inizio);
 // Funzioni
 //
 function inizio(){
-    generaCella();
-    generaNumero();
+    pulisci();
+
+    for (let i = 0; i < limiteEstrazioni; i++){
+        generaCella(0, 9);
+    }
+
+    attivaTimer()
 }
 
 
 // //
-// function genera
+function pulisci(){
+    CONTAINER.innerHTML = "";
+}
 
-
-function generaCella(){
+function generaCella(min, max){
+    
     const box = document.createElement("div");
     box.classList.add("box", "center", "m10");
 
-    box.append(generaNumero(0, 9));
+    box.append(Math.floor(Math.random() * (max - min)));
 
     CONTAINER.append(box);
     return box;
 }
 
-function generaNumero(max, min){
-    return Math.floor(Math.random() * (max - min + 1) + min);
+function attivaTimer(){
+
 }
