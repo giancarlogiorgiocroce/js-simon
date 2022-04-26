@@ -10,7 +10,7 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 */
 
 /*
-    1. Creare 5 numeri casuali (da 1 a 20).
+    1. Creare 5 numeri casuali (da 0 a 9).
     2. Rendere i numeri unici.
     3. Pusha i numeri in un array
     4. Creare un box dove appendere i numeri in modo che siano visibili.
@@ -23,6 +23,7 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 // Variabili universali
 const INIT_BTN = document.querySelector(".my-btn");
 const CONTAINER = document.querySelector(".container");
+const output = document.querySelector("h1");
 const limiteEstrazioni = 5;
 let listaNumeriComputer = [];
 let listaNumeriUtente = [];
@@ -47,6 +48,7 @@ function inizio(){
 // //
 function pulisci(){
     CONTAINER.innerHTML = "";
+    output.innerHTML = "";
     listaNumeriComputer = [];
     listaNumeriUtente = [];
 }
@@ -81,7 +83,7 @@ function cancellaCelle() {
 
 function chiediNumeri(){
     while(listaNumeriUtente.length<listaNumeriComputer.length){
-        const numeroUtente = parseInt(prompt("Inserisci in ordine i numeri visti"));
+        const numeroUtente = parseInt(prompt("Inserisci in ordine i numeri visti, uno alla volta"));
         listaNumeriUtente.push(numeroUtente);
         console.log(listaNumeriUtente);
     }
@@ -109,7 +111,13 @@ function fineGioco(arr1, arr2) {
 
     console.log("hai imbroccato tutti questi", arr3, "ma sbagliato tutti questi", arr4, "per un totale di:", arr3-arr4, "punti");
 
-    document.querySelector("h1").innerHTML = `Hai guadagnato un totale di ${punti} punti!`;
+    if (punti===1){
+        output.innerHTML = `Hai guadagnato ${punti} punto totale!`;
+    } else if (punti===5){
+        output.innerHTML = `Ottima memoria, hai vinto!`;
+    } else{
+        output.innerHTML = `Hai guadagnato un totale di ${punti} punti!`;  
+    }
 
 }
 
