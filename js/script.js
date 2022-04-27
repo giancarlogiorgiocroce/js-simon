@@ -60,8 +60,6 @@ function generaCelle(){
 
         CONTAINER.append(box);
     }
-    
-    return box;
 }
 
 function generaNumeri(min, max){
