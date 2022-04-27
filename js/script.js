@@ -37,10 +37,7 @@ INIT_BTN.addEventListener('click', inizio);
 function inizio(){
     pulisci();
     setTimeout(cancellaCelle, "2000");
-
-    for (let i = 0; i < limiteEstrazioni; i++){
-        generaCella();
-    }
+    generaCelle();
 
 }
 
@@ -53,15 +50,17 @@ function pulisci(){
     listaNumeriUtente = [];
 }
 
-function generaCella(){
+function generaCelle(){
     
-    const box = document.createElement("div");
-    box.classList.add("box", "center", "m10");
+    for (let i = 0; i < limiteEstrazioni; i++){
+        const box = document.createElement("div");
+        box.classList.add("box", "center", "m10");
 
-    box.append(generaNumeri(0, 9));
+        box.append(generaNumeri(0, 9));
 
-
-    CONTAINER.append(box);
+        CONTAINER.append(box);
+    }
+    
     return box;
 }
 
